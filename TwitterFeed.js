@@ -15,8 +15,6 @@ function TwitterFeed(props) {
 
     useEffect(() => {
         (async () => {
-            console.log('changed')
-            console.log("fetching tweets")
             let data = await API.index();
             setTweets(data.data);
         })();
@@ -39,7 +37,6 @@ function TwitterFeed(props) {
             <div className="block">
                 {feed}
                 <Compose pushTweet={async (tweet) => {
-                    console.log("pushing new tweet")
                     setTweets(list => list.push(tweet));
                 }} />
                 <div
