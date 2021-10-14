@@ -8,7 +8,6 @@ function CommentButton(props) {
             data-type="button"
             onClick={(e) => {
                 e.stopPropagation();
-                console.log("pressed comment button", props.tweet)
                 props.setCommentBox(
                     <CommentForm
                         setCommentBox={props.setCommentBox}
