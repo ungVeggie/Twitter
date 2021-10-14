@@ -1,6 +1,3 @@
-//document.querySelector("#twitterfeed").onscroll=(e)=>console.log(e.target.scrollTop);
-//console.log(document.querySelector("#twitterfeed"))
-
 function Sidebar(props) {
     return (
         <aside className="columns is-centered has-text-centered is-multiline is-mobile">
