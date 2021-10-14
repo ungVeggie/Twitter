@@ -1,7 +1,6 @@
 import CommentForm from '../Forms/CommentForm';
 
 function CommentButton(props) {
-    //console.log("tweet in commment buton", props.tweet)
     return (
         <button
             className="button is-rounded"
