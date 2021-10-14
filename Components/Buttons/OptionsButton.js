@@ -4,7 +4,6 @@ function OptionsButton(props) {
             className="dropdown is-hoverable is-right"
             onClick={(e) => {
                 e.stopPropagation();
-                console.log("here");
                 e.currentTarget.classList.add("is-active");
                 let o_info = e.currentTarget.getBoundingClientRect();
                 let menu = (e.currentTarget.children[1].firstChild);
@@ -32,7 +31,7 @@ function OptionsButton(props) {
                 className="dropdown-menu"
                 id="dropdown-menu"
                 role="menu"
-                onClick={(e) => {console.log("im a god");e.stopPropagation()}}
+                onClick={(e) => {e.stopPropagation()}}
             >
                 <div
                     className="dropdown-content has-background-primary"
