@@ -4,7 +4,7 @@ function OptionsButton(props) {
             className="dropdown is-hoverable is-right"
             onClick={(e) => {
                 e.stopPropagation();
-                console.log("here")
+                console.log("here");
                 e.currentTarget.classList.add("is-active");
                 let o_info = e.currentTarget.getBoundingClientRect();
                 let menu = (e.currentTarget.children[1].firstChild);
