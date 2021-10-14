@@ -6,14 +6,10 @@ import { useEffect, useState } from "react";
 
 function SelectiveView(props) {
     const [replies, setReplies] = useState(null);
-    console.log(props)
     useEffect(() => {
         (async () => {
-            console.log("the tweet is", props.tweet)
             let reply = await API.read(props.tweet.id);
-            console.log("the reply is", reply)
             let replies = reply.data.replies;
-            console.log("replies are", replies)
             if (replies) {
                 let r = replies.map(tweet =>
                     <TweetView
@@ -24,7 +20,6 @@ function SelectiveView(props) {
                         isNestable={false}
                     />
                 )
-                console.log(r)
                 setReplies(r)
             }
         })();
