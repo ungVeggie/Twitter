@@ -1,0 +1,318 @@
+@import "../../comp426-cli/node_modules/bulma/bulma.sass";
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+@use "sass:map";
+
+@function randomDegree() {
+  @return unquote(ceil(random(100)) + "deg");
+}
+
+@function randomHSL() {
+  $result: hsla(ceil(random(360)), 100%, 50%, 1);
+  @return $result;
+}
+
+@function randomColor() {
+  $result: "#";
+  $hex: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f";
+  @for $_ from 0 to 6 {
+    $result: $result + nth($hex, ceil(random(15) + 1));
+  }
+  @return unquote($result);
+}
+
+$green: hsl(133, 82%, 15%);
+$light-green: hsl(120, 73%, 75%);
+$olive-green: hsl(58, 100%, 20%);
+$neon-green: rgb(14, 255, 147);
+$light-warning: hsl(47, 100%, 92%);
+$blue: hsl(221, 93%, 54%);
+$electric-blue: hsl(234, 100%, 48%);
+$light-blue: hsl(204, 100%, 80%);
+$cerulean-blue: hsl(205, 55%, 75%);
+$neon-blue: hsl(189.08, 100%, 50.78%);
+$red: hsl(348, 100%, 41%);
+$light-red: hsl(351, 69%, 82%);
+$yellow: hsl(48, 73%, 39%);
+$light-yellow: hsl(59, 100%, 50%);
+$autumn-gold: hsl(37, 61%, 42%);
+$hawthorne-gold: hsl(58, 42%, 55%);
+$tan: hsl(59, 43%, 63%);
+$grey: hsl(0, 8%, 75%);
+$orange: hsla(24, 100%, 53%, 0.904);
+$aged-pumpkin-orange: hsl(27, 64%, 57%);
+$light-orange: hsla(39, 100%, 65%, 0.938);
+$purple: hsl(278, 100%, 56%);
+$light-purple: hsl(289, 100%, 88%);
+$pink: hsl(318, 100%, 41%);
+$light-pink: hsl(318, 100%, 88%);
+$apricot: hsl(24, 90, 84);
+$black-cherry-violet: hsl(324, 34%, 34%);
+$warning-darker: hsl(49, 77%, 71%);
+
+* {
+  box-sizing: border-box;
+}
+
+.tweetview {
+  scroll-margin: 10px;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  background:red;
+}
+
+.tag {
+  background: "none";
+}
+
+.black-cherry-violet {
+  background-color: $black-cherry-violet;
+}
+
+.has-background-rainbow {
+  background-image: linear-gradient(
+    randomDegree(),
+    randomHSL() 10%,
+    randomHSL() 20%,
+    randomHSL() 30%,
+    randomHSL() 40%,
+    randomHSL() 50%,
+    randomHSL() 60%,
+    randomHSL() 70%,
+    randomHSL() 80%,
+    randomHSL() 90%,
+    randomHSL() 100%
+  );
+
+}
+
+.is-red {
+  color: $red;
+}
+
+.has-text-purple {
+  color: purple;
+}
+
+.scrollable {
+  overflow: auto;
+}
+
+.upfront {
+  z-index: 200;
+  position: fixed;
+  width: 50%;
+  background: $grey;
+  border: 2px solid $black-cherry-violet;
+}
+
+.textarea {
+  white-space: pre-wrap;
+  height: auto !important;
+}
+
+.groovey-b1 {
+  border: 6px groove $grey;
+}
+
+.groovey-b2 {
+  border: 2px solid $black-cherry-violet;
+}
+
+.border-top-bot {
+  border-top: 1px groove $grey;
+  border-bottom: 1px groove $grey;
+}
+
+.dropdown-content {
+  position: fixed;
+}
+
+p.text-wrap {
+  display: block; /* or inline-block, at least its a block element */
+  width: auto; /* or width is certain by parent element */
+  height: auto; /* height cannot be defined */
+  word-break: break-all; /*  */
+  word-wrap: break-word; /* if you want to cut the complete word */
+  white-space: pre-wrap; /* be sure its not 'nowrap'! ! ! :/ */
+}
+
+p {
+  display: block; /* or inline-block, at least its a block element */
+  width: auto; /* or width is certain by parent element */
+  height: auto; /* height cannot be defined */
+  word-break: break-all; /*  */
+  word-wrap: break-word; /* if you want to cut the complete word */
+  white-space: normal; /* be sure its not 'nowrap'! ! ! :/ */
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+button[data-type*="button"] {
+  border: none;
+  background: none;
+}
+
+button[data-type="dropdown-button"]:hover {
+  border: none;
+}
+
+button.dropdown-item {
+  border: none;
+}
+
+button[name="like"]:hover {
+  color: $red;
+  > span.icon {
+    animation: emphasize 1s ease-in-out;
+  }
+  background: $light-red;
+}
+
+button[name="comment"]:hover {
+  color: $green;
+  > span.icon {
+    animation: emphasize 1s ease-in-out;
+  }
+  background: $neon-green;
+}
+
+button[name="retweet"]:hover {
+  color: $blue;
+  > span.icon {
+    animation: emphasize 1s ease-in-out;
+  }
+  background: $light-blue;
+}
+
+button[name="edit"]:hover {
+  color: $light-purple;
+  > span.icon {
+    animation: emphasize 1s ease-in-out;
+  }
+  background: $purple;
+}
+
+button[name="options"]:hover {
+  color: $apricot;
+  background: $cerulean-blue;
+  border: none;
+}
+
+button[name="tweet"]:hover {
+  color: $orange;
+  > span.icon {
+    animation: peck 1s ease-out infinite;
+  }
+}
+
+button[name="edit"] {
+  color: $light-purple;
+}
+
+button[name="comment"] {
+  color: $light-green;
+}
+
+button[name="retweet"] {
+  color: $light-blue;
+}
+
+button[name="like"] {
+  color: $light-red;
+}
+
+button[name="tweet"] {
+  color: $pink;
+  background: $light-red;
+}
+
+button[name="delete"] {
+  float: right;
+  color: $orange;
+}
+
+button[name="delete"]:hover {
+  color: $light-yellow;
+  background: $tan;
+  > span.icon {
+    animation: emphasize 1s ease-in-out;
+  }
+}
+
+span.icon.is-large.size {
+  font-size: 10vw;
+}
+
+.moved {
+  animation: move 2s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes peck {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes emphasize {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes move {
+  0% {
+    left: 50px;
+    top: 50px;
+  }
+  100% {
+    left: var(--x);
+    top: var(--y);
+  }
+}
+
+@keyframes shiftTone {
+  0% {
+    opacity: 0.7;
+    background-image: linear-gradient(
+      randomDegree(),
+      randomHSL() 10%,
+      randomHSL() 20%,
+      randomHSL() 30%,
+      randomHSL() 40%,
+      randomHSL() 50%,
+      randomHSL() 60%,
+      randomHSL() 70%,
+      randomHSL() 80%,
+      randomHSL() 90%,
+      randomHSL() 100%
+    );
+  }
+  100% {
+    opacity: 1;
+    background-image: linear-gradient(
+      randomDegree(),
+      randomHSL() 10%,
+      randomHSL() 20%,
+      randomHSL() 30%,
+      randomHSL() 40%,
+      randomHSL() 50%,
+      randomHSL() 60%,
+      randomHSL() 70%,
+      randomHSL() 80%,
+      randomHSL() 90%,
+      randomHSL() 100%
+    );
+  }
+}
