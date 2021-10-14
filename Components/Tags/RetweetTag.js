@@ -1,6 +1,5 @@
 function RetweetTag(props) {
     if (props.tweet.type !== "retweet") return null;
-    //console.log("the tweet in retweet tag is", props.tweet)
     if (!props.tweet.parent) return null;
   
     return (
